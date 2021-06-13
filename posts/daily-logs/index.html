@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> daily logs - Hugo Daily-logs </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="referrer" content="no-referrer">
+    <meta name="description" content="" />
+    <meta property="og:site_name" content="Hugo Daily-logs" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://example.com/posts/daily-logs/" />
+    <meta property="og:title" content="daily logs" />
+    <meta property="og:image" content="https://example.com" />
+    <meta property="og:description" content="" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <meta name="twitter:title" content="daily logs" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="https://example.com" />
+
+    <link rel="canonical" href="https://example.com/posts/daily-logs/">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://example.comcss/custom.css" />
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github-gist.min.css" integrity="sha512-od7JLoOTxM8w/HSKGzP9Kexc20K9p/M2zxSWsd7H1e4Ctf+8SQFtCWEZnW5u6ul5ehSECa5QmOk9ju2nQMmlVA==" crossorigin="anonymous" />
+    
+
+    
+
+    <link rel="shortcut icon"
+        href="https://example.com/images/favicon.png">
+
+    
+    <link href="https://example.com/index.xml" rel="alternate" type="application/rss+xml" title="Hugo Daily-logs" />
+    
+</head>
+
+<body>
+    
+    <div class="mt-xl header">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="https://example.com">
+                    <h1 class="name">Hugo Tanka Theme</h1>
+                </a>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <ul class="nav nav-primary">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://example.com/">
+                        
+                        Home
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-lg-8">
+                    <h1 class="mx-0 mx-md-4">daily logs</h1>
+                    <div class="markdown">
+                        
+    <h2 id="8521">8/5/21</h2>
+<p>API route for submit,find and file
+@app.route(&quot;/submit&rdquo;, methods=[&ldquo;GET&rdquo;,&ldquo;POST&rdquo;])
+def submit():
+name = request.form.get(&ldquo;feature-title&rdquo;)
+desc = request.form.get(&ldquo;short_summary&rdquo;)</p>
+<pre><code>col.insert_one({ &quot;Name&quot;: name , &quot;description&quot;: desc })
+for x in col.find():
+    
+   
+
+    val=x['Name']
+    val2=x['description'] 
+result = {
+    'Name' : val ,
+    'description' : val2
+}  
+# {{ org.backgroundInfo | replace(‘\n’, ‘&lt;br&gt;’) }} 
+
+# return json.dumps(result) 
+return render_template('result.html', result = result)
+
+@app.route(&quot;/file&quot;, methods=[&quot;GET&quot;]) 
+</code></pre><p>def file():
+response=[]
+for main in col.find():
+value = main[&lsquo;Name&rsquo;]
+value2 = main[&lsquo;description&rsquo;]</p>
+<pre><code> main = {
+         'Name' : value ,
+         'description' : value2
+    }  
+    response.append(main)
+    print(response)
+
+    
+# return json.dumps(response) 
+return render_template('main.html', main = response) 
+</code></pre><p>@app.route(&quot;/find/<username>&rdquo;, methods=[&ldquo;GET&rdquo;])
+def find(username):
+db = cluster[&ldquo;learning_challenge&rdquo;]
+col = db[&ldquo;Name&rdquo;]</username></p>
+<pre><code>mydata=[]
+myquery = { &quot;Name&quot;: username }
+
+for mydoc in col.find(myquery):
+    mydata.append(mydoc)
+
+
+print(mydata)
+return render_template('find.html', data=mydata) 
+</code></pre><h2 id="10521">10/5/21</h2>
+<p>provides path to the stylesheet inside href attribute and rel attribute with a value of stylesheet</p>
+<h2 id="11521">11/5/21</h2>
+<ol>
+<li>append an item in a dictionary
+my_dict = {&ldquo;username&rdquo;: &ldquo;XYZ&rdquo;, &ldquo;email&rdquo;: &ldquo;<a href="mailto:xyz@gmail.com">xyz@gmail.com</a>&rdquo;, &ldquo;location&rdquo;:&ldquo;Mumbai&rdquo;}</li>
+</ol>
+<p>my_dict[&lsquo;name&rsquo;]='Nick&rsquo;</p>
+<p>print(my_dict)
+2. filter result (learning challenge app)- to find data according to user name
+import pymongo</p>
+<p>myclient = pymongo.MongoClient(&ldquo;mongodb://localhost:27017/&quot;)
+mydb = myclient[&ldquo;mydatabase&rdquo;]
+mycol = mydb[&ldquo;customers&rdquo;]</p>
+<p>myquery = { &ldquo;address&rdquo;: { &ldquo;$regex&rdquo;: &ldquo;^S&rdquo; } }</p>
+<p>mydoc = mycol.find(myquery)</p>
+<p>for x in mydoc:
+print(x)</p>
+<h2 id="12521">12/5/21</h2>
+<ol>
+<li>
+<p>adding borders around text
+.boxed {
+border: 1px solid rgb(0, 0, 0) ;
+width: 68rem;
+padding: 20px;</p>
+</li>
+<li>
+<p>adding a line after entering data description</p>
+</li>
+</ol>
+<p>{% autoescape false %}{{result.description | replace(&quot;\n&rdquo;, &quot;
+&ldquo;)}}{% endautoescape %}</p>
+<pre><code>&lt;h2&gt;topic-learnt&lt;/h2&gt;
+{% autoescape false %}
+&lt;td&gt;{{i.description | replace(&quot;\n&quot;, &quot;&lt;br/&gt;&quot;)}}&lt;/td&gt;
+{% endautoescape %} 
+</code></pre><ol start="3">
+<li>UI template decision
+<a href="https://codepen.io/juliangarnier/pen/idhuG">https://codepen.io/juliangarnier/pen/idhuG</a>
+<a href="https://codepen.io/sschepis/pen/ErFen">https://codepen.io/sschepis/pen/ErFen</a></li>
+</ol>
+<h2 id="14521">14/5/21</h2>
+<p>sockets- cricket runs</p>
+<p><a href="https://pythontic.com/modules/socket/send">https://pythontic.com/modules/socket/send</a></p>
+<p><a href="https://socket.io/docs/v3/emitting-events/">https://socket.io/docs/v3/emitting-events/</a></p>
+<p><a href="https://realpython.com/python-sockets/">https://realpython.com/python-sockets/</a></p>
+<p>26/5/21</p>
+<p>UI -Serkinti (Balloons)</p>
+<p>$(function() {   for (var i=0; i &lt; 100; i++) {     $</p>
+<p>KaTeX parse error: Expected &lsquo;}', got &lsquo;EOF&rsquo; at end of input: …00; i++) {     </p>
+<p>('.balloons&rsquo;).append(&quot;&lt;div class='balloon balloon&rdquo; + i + &ldquo;'&gt;&lt;/div&gt;&quot;);
+  }
+});</p>
+<p><a href="https://codepen.io/giuliacardieri/pen/azERrp">https://codepen.io/giuliacardieri/pen/azERrp</a></p>
+<p>2/06/2021</p>
+<p>mogoDB deletion : <a href="https://www.tutorialspoint.com/mongodb/mongodb">https://www.tutorialspoint.com/mongodb/mongodb</a>_delete_document.htm</p>
+<p>8/6/2021</p>
+<p><a href="https://www.codespeedy.com/how-to-find-day-name-from-date-in-python/">https://www.codespeedy.com/how-to-find-day-name-from-date-in-python/</a></p>
+<p>11/06/2021</p>
+<p><a href="https://www.w3schools.com/howto/howto_js_slideshow.asp">https://www.w3schools.com/howto/howto_js_slideshow.asp</a> (adding data to carousel)</p>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="comments">
+    <div class="py-3 content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-lg-8">
+                    <div class="comments">
+                        <script src="https://utteranc.es/client.js" repo=""
+                            issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async>
+                            </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+
+    
+
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" defer></script>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" defer></script>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/stan.min.js" defer></script>
+        
+        <script>
+            window.addEventListener('load', function() {
+                hljs.initHighlighting();
+            }, true);
+        </script>
+    
+
+    
+
+    
+    
+        
+<script src="https://example.com/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+</body>
+
+</html>
